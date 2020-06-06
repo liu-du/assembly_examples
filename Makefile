@@ -1,4 +1,4 @@
-ALL=ex1 ex1.o ex2 ex2.o ex2-as ex2-as.o
+ALL=ex1 ex1.o ex2 ex2.o ex2-as ex2-as.o ex5 ex5.o stack stack.o function function.o
 
 all: $(ALL)
 

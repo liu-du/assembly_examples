@@ -1,0 +1,34 @@
+global _start
+
+section .data
+    msg db "caller", 0x0a
+    len equ $ - msg
+
+section .text
+_start:
+    call func
+    mov eax, 4
+    mov ebx, 1
+    mov ecx, msg
+    mov edx, len
+    int 0x80
+    mov eax, 1
+    mov ebx, 87
+    int 0x80
+
+
+func:
+    push ebp
+    mov ebp, esp
+    sub esp, 3
+    mov [esp], byte 'H'
+    mov [esp+1], byte 'i'
+    mov [esp+2], byte 0x0a
+    mov eax, 4
+    mov ebx, 1
+    mov ecx, esp
+    mov edx, 3
+    int 0x80
+    mov esp, ebp
+    pop ebp
+    ret
